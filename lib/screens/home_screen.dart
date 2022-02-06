@@ -9,7 +9,14 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // BuildContext: hace referencia al árbol de Widgets que tiene mi App (tiene info del contexto donde se esta colocando el Widget actual)
+
     // Retornar el Widget
-    return const Center(child: Text('Hola mundo desde Flutter'));
+    // ? Si queremos envolver nuestro Widget dentro de otro, se recomienda en VS colocar el puntero sobre el Widget objetivo y presionar Window + .
+    // La mayoría de los Widgets tienen un Child o un conjunto de Children, son pocos los que no
+    // Scaffold me permite colocar un canvas para comenzar a organizar la estructura de mi App para colocar sus widgets generales
+    return const Scaffold(
+        // backgroundColor: Colors.indigo,
+        body: Center(child: Text('Hola mundo desde Flutter')));
   }
 }
