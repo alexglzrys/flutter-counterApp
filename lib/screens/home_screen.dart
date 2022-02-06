@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 
 // Separar nuestros componentes en clases independientes
 class HomeScreen extends StatelessWidget {
+  final double _fontSize30 = 30.0;
+
   // El key permite identificar un Widget especifico dentro del contexto de nuestra App
   // Se usa en determinadas ocasiones
   const HomeScreen({Key? key}) : super(key: key);
@@ -27,7 +29,26 @@ class HomeScreen extends StatelessWidget {
           // La alineación de las filas y coliumnas, es identico a FLEX de CSS
           // El eje transversal siempre tien el tamaña del widget con mayor tamaño. En este caso se recomienda que los widgets tengan un ancho de 100%
           mainAxisAlignment: MainAxisAlignment.center,
-          children: const [Text('Número de taps'), Text('0')],
+
+          // ! Si en algun momento tenemos problemas con CONST - Es importante leér el erro para retirarlo del elemento sugerido
+          // ? Y o recomiendo que coloquemos const hasta el final de crear la estructura del Widget, de esta forma el IDE recomendará que elemento require CONST y que no
+          children: [
+            Text(
+              'Número de taps',
+              // Cambiar el estilo a este Widget de tipo Text
+              style: TextStyle(
+                  fontSize: _fontSize30,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.blue),
+            ),
+            Text(
+              '0',
+              style: TextStyle(
+                  fontSize: _fontSize30,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.amber),
+            )
+          ],
         )));
   }
 }
