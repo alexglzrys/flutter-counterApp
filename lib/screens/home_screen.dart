@@ -15,8 +15,19 @@ class HomeScreen extends StatelessWidget {
     // ? Si queremos envolver nuestro Widget dentro de otro, se recomienda en VS colocar el puntero sobre el Widget objetivo y presionar Window + .
     // La mayoría de los Widgets tienen un Child o un conjunto de Children, son pocos los que no
     // Scaffold me permite colocar un canvas para comenzar a organizar la estructura de mi App para colocar sus widgets generales
-    return const Scaffold(
+    return Scaffold(
         // backgroundColor: Colors.indigo,
-        body: Center(child: Text('Hola mundo desde Flutter')));
+        appBar: AppBar(
+          title: const Text('Home Screen'),
+          elevation: 10.0,
+        ),
+        body: Center(
+            child: Column(
+          // Alinear la columna al centro en su eje principal (eje Y) - Posicionar el puntero sobre la propiedad nos ayuda a saber que tipo de valor requiere
+          // La alineación de las filas y coliumnas, es identico a FLEX de CSS
+          // El eje transversal siempre tien el tamaña del widget con mayor tamaño. En este caso se recomienda que los widgets tengan un ancho de 100%
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: const [Text('Número de taps'), Text('0')],
+        )));
   }
 }
