@@ -23,6 +23,14 @@ class HomeScreen extends StatelessWidget {
           title: const Text('Home Screen'),
           elevation: 10.0,
         ),
+        // Boton flotante (pero en esa posición se puede colocar cualquier Widget)
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            // Las funciones pueden o no modificar algo, por tanto, sus Widgets no pueden ser constantes
+            print('Presionado');
+          },
+          child: const Icon(Icons.plus_one),
+        ),
         body: Center(
             child: Column(
           // Alinear la columna al centro en su eje principal (eje Y) - Posicionar el puntero sobre la propiedad nos ayuda a saber que tipo de valor requiere
