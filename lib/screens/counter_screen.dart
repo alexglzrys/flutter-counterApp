@@ -32,14 +32,44 @@ class _CounterScreenState extends State<CounterScreen> {
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
         // Boton flotante (pero en esa posición se puede colocar cualquier Widget)
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            // Cambio el estado
-            counter++;
-            // Indicar a Flutter que el estado ha cambiado, por tanto redibuje los cambios en pantalla para este Widget
-            setState(() {});
-          },
-          child: const Icon(Icons.plus_one),
+        // Para este ejemplo tenemos 3 botones flotantes agrupados en una fila
+        floatingActionButton: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            FloatingActionButton(
+              onPressed: () {
+                // Cambio el estado
+                counter--;
+                // Indicar a Flutter que el estado ha cambiado, por tanto redibuje los cambios en pantalla para este Widget
+                setState(() {});
+              },
+              child: const Icon(Icons.exposure_minus_1),
+            ),
+
+            // ? Una técnica utilizada para separar Widgets es usar el Widget.
+            /*const SizedBox(
+              width: 30.0,
+            ),*/
+
+            FloatingActionButton(
+              onPressed: () {
+                // Cambio el estado
+                counter = 0;
+                // Indicar a Flutter que el estado ha cambiado, por tanto redibuje los cambios en pantalla para este Widget
+                setState(() {});
+              },
+              child: const Icon(Icons.restore),
+            ),
+            FloatingActionButton(
+              onPressed: () {
+                // Cambio el estado
+                counter++;
+                // Indicar a Flutter que el estado ha cambiado, por tanto redibuje los cambios en pantalla para este Widget
+                setState(() {});
+              },
+              child: const Icon(Icons.plus_one),
+            ),
+          ],
         ),
         body: Center(
             child: Column(
