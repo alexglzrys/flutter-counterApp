@@ -1,4 +1,5 @@
-import 'package:counter_app/screens/home_screen.dart';
+import 'package:counter_app/screens/counter_screen.dart';
+// import 'package:counter_app/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 
 // Entrada principal de la aplicación
@@ -22,6 +23,6 @@ class MyApp extends StatelessWidget {
     return const MaterialApp(
         // Retirar el tag de debug en la vista de nuestra app
         debugShowCheckedModeBanner: false,
-        home: HomeScreen());
+        home: CounterScreen());
   }
 }

@@ -1,15 +1,20 @@
 // Se recomienda que los Widgets vengan del paquete "material.dart", si usams cupertino, nuestros Widgets estarán muy puidos para iOS
 import 'package:flutter/material.dart';
 
-// Separar nuestros componentes en clases independientes
-class HomeScreen extends StatelessWidget {
+// Window + . en el tipo de Widget para cambiar de estado a sin estado (nos mantiene toda al estructura escrita hasta el momento)
+// Un StatefulWidget puede gestionar su estado, y redibujarse en caso de que algo cambie
+class CounterScreen extends StatefulWidget {
+  const CounterScreen({Key? key}) : super(key: key);
+
+  @override
+  State<CounterScreen> createState() => _CounterScreenState();
+}
+
+class _CounterScreenState extends State<CounterScreen> {
   final double _fontSize30 = 30.0;
 
-  // ! Los StatelessWidget no pueden gestionar su estado ya que al cambiar, estos no tienen la capacidad de redibujar el Widget que cambio
-
-  // El key permite identificar un Widget especifico dentro del contexto de nuestra App
-  // Se usa en determinadas ocasiones
-  const HomeScreen({Key? key}) : super(key: key);
+  // Mi estado inicial del contador
+  int counter = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -22,15 +27,17 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
         // backgroundColor: Colors.indigo,
         appBar: AppBar(
-          title: const Text('Home Screen'),
+          title: const Text('Counter Screen'),
           elevation: 10.0,
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
         // Boton flotante (pero en esa posición se puede colocar cualquier Widget)
         floatingActionButton: FloatingActionButton(
           onPressed: () {
-            // Las funciones pueden o no modificar algo, por tanto, sus Widgets no pueden ser constantes
-            print('Presionado');
+            // Cambio el estado
+            counter++;
+            // Indicar a Flutter que el estado ha cambiado, por tanto redibuje los cambios en pantalla para este Widget
+            setState(() {});
           },
           child: const Icon(Icons.plus_one),
         ),
@@ -40,7 +47,6 @@ class HomeScreen extends StatelessWidget {
           // La alineación de las filas y coliumnas, es identico a FLEX de CSS
           // El eje transversal siempre tien el tamaña del widget con mayor tamaño. En este caso se recomienda que los widgets tengan un ancho de 100%
           mainAxisAlignment: MainAxisAlignment.center,
-
           // ! Si en algun momento tenemos problemas con CONST - Es importante leér el erro para retirarlo del elemento sugerido
           // ? Y o recomiendo que coloquemos const hasta el final de crear la estructura del Widget, de esta forma el IDE recomendará que elemento require CONST y que no
           children: [
@@ -53,7 +59,7 @@ class HomeScreen extends StatelessWidget {
                   color: Colors.blue),
             ),
             Text(
-              '0',
+              '$counter',
               style: TextStyle(
                   fontSize: _fontSize30,
                   fontWeight: FontWeight.bold,
