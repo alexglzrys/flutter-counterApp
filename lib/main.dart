@@ -1,3 +1,4 @@
+import 'package:counter_app/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 
 // Entrada principal de la aplicación
@@ -16,9 +17,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // Construir el cuerpo de nuestra aplicación
+    // MaterialApp es el punto de entrada de nuestra App
     // Se recomienda instanciar nuestras clases padre como constantes si sus hijos nunca van a cambiar, para ello no podemos valer de las ayudas del IDE
     return const MaterialApp(
-      home: Center(child: Text('Hola mundo')),
-    );
+        // Retirar el tag de debug en la vista de nuestra app
+        debugShowCheckedModeBanner: false,
+        home: HomeScreen());
   }
 }
